@@ -1,166 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Saurabh Tripathi | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Saurabh Tripathi — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    :root{
+      --bg1: #e6f0ff;
+      --bg2: #eaf8ff;
+      --card: rgba(255,255,255,0.85);
+      --accent: #2b8cff;
+      --muted: #65748b;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 8px 30px rgba(15,23,42,0.08);
+      --radius: 12px;
+      --maxw: 1000px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,var(--bg1),var(--bg2));
+      -webkit-font-smoothing:antialiased;color:#0f1724;
+      padding:32px 20px;
+      display:flex;justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--maxw);}
+
+    header{
+      display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:18px;
+    }
+    .hero{
+      display:flex;gap:18px;align-items:center;
+    }
+    .avatar{
+      width:92px;height:92px;border-radius:18px;background:linear-gradient(135deg,var(--card),var(--glass));box-shadow:var(--shadow);
+      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:var(--accent);
+      flex-shrink:0
+    }
+    .name{
+      line-height:1;}
+    .name h1{margin:0;font-size:22px}
+    .name p{margin:3px 0 0;color:var(--muted);font-size:13px}
+
+    .contact{font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:center}
+    .contact a{color:var(--accent);text-decoration:none}
+
+    .card{
+      background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-bottom:14px;
     }
 
-    body {
-      background-color: #f4faff;
-      color: #222;
-      line-height: 1.6;
-      padding: 20px;
-    }
+    main{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start}
 
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+    .section{margin-bottom:12px}
+    h2{font-size:16px;margin:0 0 10px 0;color:#0b254a}
+    p,li{color:#0f1724}
+    .muted{color:var(--muted);font-size:13px}
 
-    header h1 {
-      font-size: 2.2rem;
-      color: #0077cc;
-    }
+    /* left column content */
+    .left .skills-grid{display:flex;flex-wrap:wrap;gap:8px}
+    .pill{background:transparent;border:1px dashed rgba(15,23,42,0.07);padding:6px 10px;border-radius:999px;font-size:13px}
 
-    section {
-      margin-bottom: 30px;
-    }
+    .projects .project{border-left:4px solid rgba(43,140,255,0.12);padding:10px;margin-bottom:10px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.4));}
+    .project a{color:var(--accent);text-decoration:none;font-weight:600}
+    .project .meta{font-size:13px;color:var(--muted);margin-top:6px}
 
-    h2 {
-      font-size: 1.5rem;
-      border-bottom: 2px solid #0077cc;
-      padding-bottom: 5px;
-      margin-bottom: 10px;
-    }
+    /* right column */
+    .right .mini{display:flex;flex-direction:column;gap:10px}
+    .edu-row{display:flex;justify-content:space-between;align-items:flex-start}
+    .edu-row .degree{font-weight:600}
+    .list{padding-left:18px;margin:6px 0}
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+    footer{margin-top:10px;text-align:center;color:var(--muted);font-size:13px}
 
-    ul li {
-      margin-bottom: 8px;
-    }
+    /* responsive */
+    @media (max-width:900px){main{grid-template-columns:1fr;}}
 
-    .project {
-      background-color: #ffffff;
-      padding: 15px;
-      border-left: 4px solid #0077cc;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
+    /* editable hints */
+    .editable{outline:2px dashed transparent;padding:6px;border-radius:6px}
+    .editable:focus{outline:2px dashed rgba(43,140,255,0.45);background:#fff}
 
-    .project h3 {
-      margin-bottom: 5px;
-      color: #0077cc;
-    }
+    /* small utilities */
+    .links{display:flex;gap:8px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#3fb0ff);color:#fff;font-weight:600;text-decoration:none}
 
-    .project p {
-      margin-bottom: 8px;
-    }
-
-    a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 0.9rem;
-    }
   </style>
 </head>
 <body>
+  <div class="wrap">
 
-  <header>
-    <h1>Saurabh Tripathi</h1>
-    <p>B.Tech CSE (Data Science) | AI & Startup Enthusiast</p>
-    <p>
-      <a href="mailto:saurabhtripathi8127@gmail.com">Email</a> |
-      <a href="https://github.com/Saurabh-techhub">GitHub</a> |
-      <a href="https://www.linkedin.com/in/saurabh-tripathi28/">LinkedIn</a>
-    </p>
-  </header>
+    <header>
+      <div class="hero">
+        <div class="avatar">ST</div>
+        <div class="name">
+          <h1 contenteditable="true" class="editable">Saurabh Tripathi</h1>
+          <p class="muted" contenteditable="true">B.Tech CSE (Data Science) — Pre-final year</p>
+          <div class="contact muted" style="margin-top:8px">
+            <span contenteditable="true">saurabhtripathi8127@gmail.com</span> •
+            <span contenteditable="true">+91-7234896280</span>
+          </div>
+        </div>
+      </div>
+      <div class="links">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I’m a Computer Science (Data Science) undergraduate passionate about building AI-based solutions and ed-tech tools. I enjoy creating practical tools that empower students and society through innovation, analytics, and automation.
-    </p>
-  </section>
+    <main>
+      <section class="left">
+        <div class="card section" id="objective">
+          <h2>Objective</h2>
+          <p contenteditable="true" class="editable muted">B.Tech CSE (Data Science) Pre-final year student skilled in Python, SQL, ML, and analytics. Passionate about solving real-world problems using AI. Seeking roles to apply data-driven thinking and technical creativity.</p>
+        </div>
 
-  <section>
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Languages:</strong> Python, SQL</li>
-      <li><strong>Libraries:</strong> Pandas, NumPy, Scikit-learn</li>
-      <li><strong>Tools:</strong> Power BI, Git/GitHub, Google Colab, Arduino, HTML/CSS/JS</li>
-      <li><strong>AI Tools:</strong> ChatGPT, Gemini, Notion AI</li>
-      <li><strong>Startup Skills:</strong> Product Development, MVP Building, Public Speaking, Team Management</li>
-    </ul>
-  </section>
+        <div class="card section" id="projects">
+          <h2>Projects</h2>
 
-  <section>
-    <h2>Projects</h2>
+          <div class="projects">
+            <div class="project">
+              <div style="display:flex;justify-content:space-between;gap:12px;align-items:start">
+                <div>
+                  <div contenteditable="true" class="editable"><strong>UpLinkAI – AI-Powered Career Platform</strong></div>
+                  <div class="muted" contenteditable="true">Founder & Product Developer — HTML, JavaScript, Firebase, DBMS, AI & ML, Power BI</div>
+                </div>
+                <div style="text-align:right">
+                  <a href="https://uplinkai.netlify.app/" target="_blank">Live</a>
+                </div>
+              </div>
+              <p class="meta" contenteditable="true">Developed a comprehensive career guidance platform featuring AI chat, personalized learning paths, interactive quizzes, and productivity tools. Designed the product concept and frontend; deployed on Netlify.</p>
+            </div>
 
-    <div class="project">
-      <h3>🚀 UpLinkAI – AI-Powered Student Career Platform</h3>
-      <p><strong>Role:</strong> Founder & Product Developer</p>
-      <p>
-        UpLinkAI is an ed-tech platform built for students to explore personalized learning paths, attempt domain quizzes, chat for peer or AI help, and build portfolios. Designed as a one-stop platform for students to go "From Learning to Earning".
-      </p>
-      <ul>
-        <li>🔹 Features: Quiz Tool, Learning Path Generator, AI Chat Support, Portfolio Builder</li>
-        <li>🔹 Tools Used: HTML, JavaScript, GitHub Pages</li>
-      </ul>
-      <p>
-        🔗 <a href="https://saurabh-techhub.github.io/uplinkai/" target="_blank">Live Website</a> |
-        <a href="https://github.com/Saurabh-techhub/uplinkai" target="_blank">GitHub Repo</a>
-      </p>
-    </div>
+            <div class="project">
+              <div contenteditable="true"><strong>Smart Dustbin – IBM Challenge</strong></div>
+              <div class="muted" contenteditable="true">Data Analyst — Python, Arduino, IBM Cloud</div>
+              <p class="meta" contenteditable="true">Forecasted bin levels with time-series logic and suggested optimized routes for waste collection. <a href="https://github.com/Saurabh-techhub/-Smart-Dustbin-Data-Science-Project" target="_blank">GitHub</a></p>
+            </div>
 
-    <div class="project">
-      <h3>Smart Dustbin – IBM Challenge</h3>
-      <p>Developed an IoT-powered smart dustbin with ML-based fill-level prediction and route optimization.</p>
-      <p><a href="https://github.com/Saurabh-techhub/-Smart-Dustbin-Data-Science-Project" target="_blank">GitHub</a></p>
-    </div>
+            <div class="project">
+              <div contenteditable="true"><strong>Solar BIPV Assessment – ISRO</strong></div>
+              <div class="muted" contenteditable="true">Solar Data Analyst — Python, CesiumJS</div>
+              <p class="meta" contenteditable="true">Calculated rooftop solar energy potential from Cartosat 3D data and visualized results. <a href="https://github.com/Saurabh-techhub/isro-bipv-analysis-model" target="_blank">GitHub</a></p>
+            </div>
 
-    <div class="project">
-      <h3>Solar BIPV Analysis – ISRO</h3>
-      <p>Analyzed Cartosat data to estimate solar rooftop potential with Python and CesiumJS.</p>
-      <p><a href="https://github.com/Saurabh-techhub/isro-bipv-analysis-model" target="_blank">GitHub</a></p>
-    </div>
+            <div class="project">
+              <div contenteditable="true"><strong>Prompt Engineering for GenAI Tools</strong></div>
+              <div class="muted" contenteditable="true">AI Workflow Designer — ChatGPT, Gemini, Power BI</div>
+              <p class="meta" contenteditable="true">Built GenAI prompt flows and dashboards for summarization and report automation. <a href="https://github.com/Saurabh-techhub" target="_blank">GitHub</a></p>
+            </div>
 
-    <div class="project">
-      <h3>Prompt Engineering with GenAI</h3>
-      <p>Built AI prompt flows for summarization, analytics, and productivity with ChatGPT & Power BI.</p>
-    </div>
+          </div>
 
-  </section>
+        </div>
 
-  <section>
-    <h2>Contact</h2>
-    <p>📧 saurabhtripathi8127@gmail.com</p>
-    <p>🔗 <a href="https://saurabh-techhub.github.io/uplinkai/" target="_blank">Visit UpLinkAI</a></p>
-  </section>
+        <div class="card section">
+          <h2>Internship</h2>
+          <div>
+            <div contenteditable="true"><strong>AI Intern – Cosmic365.AI</strong> <span class="muted">Sep–Dec 2024</span></div>
+            <p class="muted" contenteditable="true">Conducted 150+ GenAI workshops. Built prompt tools and dashboards. Awarded $600 scholarship for excellence.</p>
+            <p><a href="https://www.linkedin.com/posts/saurabh-tripathi28_internship-scholarship-cosmic365-activity-7239999514294599683-DB7M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE336woBrbQY_S0XM34Lx0x1GfhKuzO0nNQ" target="_blank">LinkedIn Post</a></p>
+          </div>
+        </div>
 
-  <footer>
-    © 2025 Saurabh Tripathi — Portfolio. Built with HTML & ❤️.
-  </footer>
+        <div class="card section">
+          <h2>Certifications</h2>
+          <ul class="list muted" contenteditable="true">
+            <li>Power BI — Coursera/Udemy</li>
+            <li>Data Analytics — Coursera/Udemy</li>
+            <li>Generative AI — Coursera/Udemy</li>
+          </ul>
+        </div>
 
+      </section>
+
+      <aside class="right">
+        <div class="card mini">
+          <h2>Education</h2>
+          <div class="edu-row">
+            <div>
+              <div class="degree" contenteditable="true">B.Tech – Computer Science (Data Science)</div>
+              <div class="muted" contenteditable="true">Lamrin Tech Skills University (2022–Present)</div>
+              <div class="muted" contenteditable="true">CGPA: 8.24</div>
+            </div>
+          </div>
+          <hr style="margin:12px 0;border:none;border-top:1px solid rgba(15,23,42,0.05)" />
+          <div class="edu-row">
+            <div>
+              <div contenteditable="true">XII – JNV (CBSE) — 75.88% <span class="muted">(2022–2023)</span></div>
+              <div contenteditable="true">X – JNV (CBSE) — 93.6% <span class="muted">(2020–2021)</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mini">
+          <h2>Technical Skills</h2>
+          <div class="skills-grid">
+            <div class="pill" contenteditable="true">Python</div>
+            <div class="pill" contenteditable="true">SQL</div>
+            <div class="pill" contenteditable="true">Pandas</div>
+            <div class="pill" contenteditable="true">NumPy</div>
+            <div class="pill" contenteditable="true">Scikit-learn</div>
+            <div class="pill" contenteditable="true">Power BI</div>
+            <div class="pill" contenteditable="true">MySQL</div>
+            <div class="pill" contenteditable="true">Git/GitHub</div>
+            <div class="pill" contenteditable="true">Firebase</div>
+            <div class="pill" contenteditable="true">nhost / hasura / netlify</div>
+          </div>
+        </div>
+
+        <div class="card mini">
+          <h2>Achievements & Interests</h2>
+          <ul class="list muted" contenteditable="true">
+            <li>Qualified JNV Entrance, BSc Data Science — IIT Madras</li>
+            <li>EF SET English B2</li>
+            <li>Kho Kho Nationals | BPL Cricket</li>
+            <li>Interests: Sci-fi, Trekking, Quizzing, Startups</li>
+          </ul>
+          <p class="muted">EF SET Certificate: <a href="https://drive.google.com/file/d/1B3rx7yJnijRd8vSzt85999Q1C7FFPX2Q/view?usp=sharing" target="_blank">View</a></p>
+        </div>
+
+        <div class="card mini" id="contact">
+          <h2>Contact & Links</h2>
+          <p class="muted">Email: <a href="mailto:saurabhtripathi8127@gmail.com">saurabhtripathi8127@gmail.com</a></p>
+          <p class="muted">Phone: +91-7234896280</p>
+          <p class="muted">Links:</p>
+          <p><a href="https://linkedin.com/in/saurabh-tripathi28/" target="_blank">LinkedIn</a> • <a href="https://github.com/Saurabh-techhub" target="_blank">GitHub</a> • <a href="https://saurabh-techhub.github.io/-Portfolio-Saurabh/" target="_blank">Portfolio</a></p>
+        </div>
+
+      </aside>
+    </main>
+
+   <footer class="muted">&copy; 2025 Saurabh Tripathi &mdash; All Rights Reserved. <a href="mailto:saurabhtripathi@gmail.com">Email</a> | <a href="https://www.linkedin.com/in/saurabhtripathi" target="_blank">LinkedIn</a></footer>
+
+
+  </div>
+
+  <script>
+    // small helper: press Ctrl+S to download current HTML snapshot
+    document.addEventListener('keydown', function(e){
+      if((e.ctrlKey||e.metaKey) && e.key === 's'){
+        e.preventDefault();
+        const blob = new Blob([document.documentElement.outerHTML], {type:'text/html'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'saurabh_tripathi_portfolio.html';
+        a.click(); URL.revokeObjectURL(url);
+      }
+    })
+  </script>
 </body>
 </html>
