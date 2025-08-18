@@ -1,254 +1,213 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Saurabh Tripathi — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Saurabh Tripathi — AI & Data Science Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg1: #e6f0ff;
-      --bg2: #eaf8ff;
-      --card: rgba(255,255,255,0.85);
-      --accent: #2b8cff;
+    :root {
+      --dark: #0f1724;
       --muted: #65748b;
-      --glass: rgba(255,255,255,0.6);
-      --shadow: 0 8px 30px rgba(15,23,42,0.08);
+      --accent: #2b8cff;
+      --bg: #f8fbff;
+      --card: rgba(255,255,255,0.95);
       --radius: 12px;
-      --maxw: 1000px;
+      --shadow: 0 8px 30px rgba(0,0,0,0.05);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(180deg,var(--bg1),var(--bg2));
-      -webkit-font-smoothing:antialiased;color:#0f1724;
-      padding:32px 20px;
-      display:flex;justify-content:center;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+
+    /* Navigation */
+    header {
+      position: fixed; top: 0; width: 100%; padding: 16px 32px;
+      display: flex; justify-content: center; gap: 24px;
+      background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);
+      z-index: 1000; transition: opacity 0.3s;
     }
-    .wrap{width:100%;max-width:var(--maxw);}
+    header.scrolled { opacity: 0.9; }
+    header a { color: var(--dark); font-weight: 600; text-decoration: none; }
 
-    header{
-      display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:18px;
+    /* Hero with Video */
+    #hero {
+      position: relative; height: 100vh; display: flex; align-items: center;
+      justify-content: center; color: white; text-align: center;
+      margin-top: -4px;
     }
-    .hero{
-      display:flex;gap:18px;align-items:center;
+    #hero video {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: -1; opacity: 0.7;
     }
-    .avatar{
-      width:92px;height:92px;border-radius:18px;background:linear-gradient(135deg,var(--card),var(--glass));box-shadow:var(--shadow);
-      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:var(--accent);
-      flex-shrink:0
+    #hero h1 {
+      font-size: 3.2rem; background: rgba(0,0,0,0.4); padding: 16px; border-radius: 8px;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1s ease-out forwards 0.5s;
     }
-    .name{
-      line-height:1;}
-    .name h1{margin:0;font-size:22px}
-    .name p{margin:3px 0 0;color:var(--muted);font-size:13px}
-
-    .contact{font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:center}
-    .contact a{color:var(--accent);text-decoration:none}
-
-    .card{
-      background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-bottom:14px;
+    #hero p {
+      margin-top: 12px; font-size: 1.2rem; background: rgba(0,0,0,0.4); padding: 10px;
+      border-radius: 6px;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1s ease-out forwards 1s;
+    }
+    #hero button {
+      margin-top: 24px; padding: 12px 28px; font-size: 1rem; border: none;
+      border-radius: 8px; background: var(--accent); color: #fff; cursor: pointer;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1s ease-out forwards 1.5s;
     }
 
-    main{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start}
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    .section{margin-bottom:12px}
-    h2{font-size:16px;margin:0 0 10px 0;color:#0b254a}
-    p,li{color:#0f1724}
-    .muted{color:var(--muted);font-size:13px}
+    section {
+      max-width: 900px; margin: 100px auto 60px; padding: 0 20px;
+    }
+    h2 { font-size: 1.8rem; margin-bottom: 24px; color: var(--accent); }
 
-    /* left column content */
-    .left .skills-grid{display:flex;flex-wrap:wrap;gap:8px}
-    .pill{background:transparent;border:1px dashed rgba(15,23,42,0.07);padding:6px 10px;border-radius:999px;font-size:13px}
+    .card {
+      background: var(--card); padding: 20px; border-radius: var(--radius);
+      box-shadow: var(--shadow); margin-bottom: 20px;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
 
-    .projects .project{border-left:4px solid rgba(43,140,255,0.12);padding:10px;margin-bottom:10px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.4));}
-    .project a{color:var(--accent);text-decoration:none;font-weight:600}
-    .project .meta{font-size:13px;color:var(--muted);margin-top:6px}
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill { background: var(--accent); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; }
 
-    /* right column */
-    .right .mini{display:flex;flex-direction:column;gap:10px}
-    .edu-row{display:flex;justify-content:space-between;align-items:flex-start}
-    .edu-row .degree{font-weight:600}
-    .list{padding-left:18px;margin:6px 0}
+    footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 0.9rem; }
 
-    footer{margin-top:10px;text-align:center;color:var(--muted);font-size:13px}
-
-    /* responsive */
-    @media (max-width:900px){main{grid-template-columns:1fr;}}
-
-    /* editable hints */
-    .editable{outline:2px dashed transparent;padding:6px;border-radius:6px}
-    .editable:focus{outline:2px dashed rgba(43,140,255,0.45);background:#fff}
-
-    /* small utilities */
-    .links{display:flex;gap:8px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#3fb0ff);color:#fff;font-weight:600;text-decoration:none}
-
+    @media (max-width: 600px) {
+      #hero h1 { font-size: 2.5rem; }
+      header a { margin: 0 12px; font-size: 0.95rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
 
-    <header>
-      <div class="hero">
-        <div class="avatar">ST</div>
-        <div class="name">
-          <h1 contenteditable="true" class="editable">Saurabh Tripathi</h1>
-          <p class="muted" contenteditable="true">B.Tech CSE (Data Science) — Pre-final year</p>
-          <div class="contact muted" style="margin-top:8px">
-            <span contenteditable="true">saurabhtripathi8127@gmail.com</span> •
-            <span contenteditable="true">+91-7234896280</span>
-          </div>
-        </div>
-      </div>
-      <div class="links">
-        <a class="btn" href="#projects">View Projects</a>
-        <a class="btn" href="#contact">Contact</a>
-      </div>
-    </header>
+  <header id="navbar">
+    <a href="#projects">Projects</a>
+    <a href="#internship">Internship</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </header>
 
-    <main>
-      <section class="left">
-        <div class="card section" id="objective">
-          <h2>Objective</h2>
-          <p contenteditable="true" class="editable muted">B.Tech CSE (Data Science) Pre-final year student skilled in Python, SQL, ML, and analytics. Passionate about solving real-world problems using AI. Seeking roles to apply data-driven thinking and technical creativity.</p>
-        </div>
+  <section id="hero">
+    <video src="https://www.w3schools.com/howto/rain.mp4" autoplay muted loop></video>
+    <div>
+      <h1>Saurabh Tripathi</h1>
+      <p>AI & Data Science Enthusiast | GenAI Specialist | Product Developer</p>
+      <button onclick="document.getElementById('projects').scrollIntoView({ behavior:'smooth' })">View My Work</button>
+    </div>
+  </section>
 
-        <div class="card section" id="projects">
-          <h2>Projects</h2>
+  <section id="objective">
+    <h2>Objective</h2>
+    <div class="card">
+      <p>Pre-final year B.Tech (CSE – Data Science) student, passionate about AI, GenAI, and data-driven product solutions. Experienced in GenAI prompt engineering, AI chatbots, automation using Nhost, Hasura, n8n & Power BI. Delivered 150+ workshops, created high-impact AI tools, and driven revenue via innovative AI products.</p>
+    </div>
+  </section>
 
-          <div class="projects">
-            <div class="project">
-              <div style="display:flex;justify-content:space-between;gap:12px;align-items:start">
-                <div>
-                  <div contenteditable="true" class="editable"><strong>UpLinkAI – AI-Powered Career Platform</strong></div>
-                  <div class="muted" contenteditable="true">Founder & Product Developer — HTML, JavaScript, Firebase, DBMS, AI & ML, Power BI</div>
-                </div>
-                <div style="text-align:right">
-                  <a href="https://uplinkai.netlify.app/" target="_blank">Live</a>
-                </div>
-              </div>
-              <p class="meta" contenteditable="true">Developed a comprehensive career guidance platform featuring AI chat, personalized learning paths, interactive quizzes, and productivity tools. Designed the product concept and frontend; deployed on Netlify.</p>
-            </div>
+  <section id="projects">
+    <h2>Projects</h2>
+  
 
-            <div class="project">
-              <div contenteditable="true"><strong>Smart Dustbin – IBM Challenge</strong></div>
-              <div class="muted" contenteditable="true">Data Analyst — Python, Arduino, IBM Cloud</div>
-              <p class="meta" contenteditable="true">Forecasted bin levels with time-series logic and suggested optimized routes for waste collection. <a href="https://github.com/Saurabh-techhub/-Smart-Dustbin-Data-Science-Project" target="_blank">GitHub</a></p>
-            </div>
-
-            <div class="project">
-              <div contenteditable="true"><strong>Solar BIPV Assessment – ISRO</strong></div>
-              <div class="muted" contenteditable="true">Solar Data Analyst — Python, CesiumJS</div>
-              <p class="meta" contenteditable="true">Calculated rooftop solar energy potential from Cartosat 3D data and visualized results. <a href="https://github.com/Saurabh-techhub/isro-bipv-analysis-model" target="_blank">GitHub</a></p>
-            </div>
-
-            <div class="project">
-              <div contenteditable="true"><strong>Prompt Engineering for GenAI Tools</strong></div>
-              <div class="muted" contenteditable="true">AI Workflow Designer — ChatGPT, Gemini, Power BI</div>
-              <p class="meta" contenteditable="true">Built GenAI prompt flows and dashboards for summarization and report automation. <a href="https://github.com/Saurabh-techhub" target="_blank">GitHub</a></p>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="card section">
-          <h2>Internship</h2>
-          <div>
-            <div contenteditable="true"><strong>AI Intern – Cosmic365.AI</strong> <span class="muted">Sep–Dec 2024</span></div>
-            <p class="muted" contenteditable="true">Conducted 150+ GenAI workshops. Built prompt tools and dashboards. Awarded $600 scholarship for excellence.</p>
-            <p><a href="https://www.linkedin.com/posts/saurabh-tripathi28_internship-scholarship-cosmic365-activity-7239999514294599683-DB7M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE336woBrbQY_S0XM34Lx0x1GfhKuzO0nNQ" target="_blank">LinkedIn Post</a></p>
-          </div>
-        </div>
-
-        <div class="card section">
-          <h2>Certifications</h2>
-          <ul class="list muted" contenteditable="true">
-            <li>Power BI — Coursera/Udemy</li>
-            <li>Data Analytics — Coursera/Udemy</li>
-            <li>Generative AI — Coursera/Udemy</li>
-          </ul>
-        </div>
-
-      </section>
-
-      <aside class="right">
-        <div class="card mini">
-          <h2>Education</h2>
-          <div class="edu-row">
-            <div>
-              <div class="degree" contenteditable="true">B.Tech – Computer Science (Data Science)</div>
-              <div class="muted" contenteditable="true">Lamrin Tech Skills University (2022–Present)</div>
-              <div class="muted" contenteditable="true">CGPA: 8.24</div>
-            </div>
-          </div>
-          <hr style="margin:12px 0;border:none;border-top:1px solid rgba(15,23,42,0.05)" />
-          <div class="edu-row">
-            <div>
-              <div contenteditable="true">XII – JNV (CBSE) — 75.88% <span class="muted">(2022–2023)</span></div>
-              <div contenteditable="true">X – JNV (CBSE) — 93.6% <span class="muted">(2020–2021)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card mini">
-          <h2>Technical Skills</h2>
-          <div class="skills-grid">
-            <div class="pill" contenteditable="true">Python</div>
-            <div class="pill" contenteditable="true">SQL</div>
-            <div class="pill" contenteditable="true">Pandas</div>
-            <div class="pill" contenteditable="true">NumPy</div>
-            <div class="pill" contenteditable="true">Scikit-learn</div>
-            <div class="pill" contenteditable="true">Power BI</div>
-            <div class="pill" contenteditable="true">MySQL</div>
-            <div class="pill" contenteditable="true">Git/GitHub</div>
-            <div class="pill" contenteditable="true">Firebase</div>
-            <div class="pill" contenteditable="true">nhost / hasura / netlify</div>
-          </div>
-        </div>
-
-        <div class="card mini">
-          <h2>Achievements & Interests</h2>
-          <ul class="list muted" contenteditable="true">
-            <li>Qualified JNV Entrance, BSc Data Science — IIT Madras</li>
-            <li>EF SET English B2</li>
-            <li>Kho Kho Nationals | BPL Cricket</li>
-            <li>Interests: Sci-fi, Trekking, Quizzing, Startups</li>
-          </ul>
-          <p class="muted">EF SET Certificate: <a href="https://drive.google.com/file/d/1B3rx7yJnijRd8vSzt85999Q1C7FFPX2Q/view?usp=sharing" target="_blank">View</a></p>
-        </div>
-
-        <div class="card mini" id="contact">
-          <h2>Contact & Links</h2>
-          <p class="muted">Email: <a href="mailto:saurabhtripathi8127@gmail.com">saurabhtripathi8127@gmail.com</a></p>
-          <p class="muted">Phone: +91-7234896280</p>
-          <p class="muted">Links:</p>
-          <p><a href="https://linkedin.com/in/saurabh-tripathi28/" target="_blank">LinkedIn</a> • <a href="https://github.com/Saurabh-techhub" target="_blank">GitHub</a> • <a href="https://saurabh-techhub.github.io/-Portfolio-Saurabh/" target="_blank">Portfolio</a></p>
-        </div>
-
-      </aside>
-    </main>
-
-   <footer class="muted">&copy; 2025 Saurabh Tripathi &mdash; All Rights Reserved. <a href="mailto:saurabhtripathi@gmail.com">Email</a> | <a href="https://www.linkedin.com/in/saurabhtripathi" target="_blank">LinkedIn</a></footer>
-
-
+  <div class="card">
+    <h3>Prompt Engineering for GenAI Tools</h3>
+    <p>Developed AI prompt workflows with ChatGPT, Gemini, Power BI, n8n, Nhost, Hasura — full-stack AI chatbot with authentication and backend automation.</p>
+    <a href="https://uplinkai-chat.netlify.app/" target="_blank">Live App</a>
   </div>
 
+  <div class="card">
+    <h3>UpLinkAI – AI Career Platform</h3>
+    <p>Built a chatbot-based learning and career guidance platform with Firebase, HTML, and Power BI dashboards.</p>
+    <a href="https://uplinkai.netlify.app/" target="_blank">Website</a>
+  </div>
+
+  <div class="card">
+    <h3>UpLinkAI Quiz App</h3>
+    <p>Created an interactive quiz application using Python, HTML, CSS, and JavaScript, hosted on Render.</p>
+    <a href="https://uplinkai-quizapp.onrender.com/" target="_blank">Live Website</a>
+  </div>
+
+  <div class="card">
+    <h3>Solar BIPV Assessment – ISRO</h3>
+    <p>Mapped solar potential on rooftops using Cartosat-3 data, Python, CesiumJS. Built visual models for planning.</p>
+    <a href="https://github.com/Saurabh-techhub/isro-bipv-analysis-model" target="_blank">GitHub</a>
+  </div>
+</section>
+
+    
+    <!-- Other project cards... -->
+  </section>
+
+  <section id="internship">
+    <h2>Internship</h2>
+    <div class="card">
+      <h3>AI Intern – Cosmic365.AI (Sep 2024–Feb 2025)</h3>
+      <p>Delivered 150+ GenAI workshops, built automation dashboards using Power BI & n8n, awarded $600 scholarship, generated significant AI-based revenue.</p>
+      <a href="https://www.linkedin.com/posts/saurabh-tripathi28_internship-scholarship-cosmic365-activity-7239999514294599683-DB7M" target="_blank">LinkedIn Post</a>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education & Skills</h2>
+    <div class="card">
+      <h3>Education</h3>
+      <p><strong>B.Tech – Computer Science (Data Science)</strong>, Lamrin Tech Skills University (2022–Present), CGPA: 8.24</p>
+      <p><strong>XII, CBSE (2022–2023)</strong> — 75.88%</p>
+      <p><strong>X, CBSE (2020–2021)</strong> — 93.6%</p>
+    </div>
+    <div class="card">
+      <h3>Technical Skills</h3>
+      <div class="skill-list">
+        <!-- list all skills -->
+        <span class="skill">Python</span><span class="skill">SQL</span><!-- ... -->
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications & Achievements</h2>
+    <div class="card">
+      <ul>
+        <li>Power BI, Data Analytics & Generative AI – Coursera/Udemy</li>
+        <li>Qualified for BSc Data Science – IIT Madras; Proud JNV Alumnus</li>
+        <li>EF SET English B2 – <a href="https://drive.google.com/file/d/1B3rx7yJnijRd8vSzt85999Q1C7FFPX2Q/view?usp=sharing" target="_blank">Certificate</a></li>
+        <li>Kho Kho Nationals & BPL Cricket</li>
+        <li>Interests: Sci‑fi, Startups, Quizzing, Trekking</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact & Links</h2>
+    <div class="card">
+      <p>Email: <a href="mailto:saurabhtripathi8127@gmail.com">saurabhtripathi8127@gmail.com</a></p>
+      <p>Phone: +91‑7234896280</p>
+      <p>Connect on: <a href="https://linkedin.com/in/saurabh-tripathi28/" target="_blank">LinkedIn</a> • <a href="https://github.com/Saurabh-techhub" target="_blank">GitHub</a> • <a href="https://saurabh-techhub.github.io/-Portfolio-Saurabh/" target="_blank">Portfolio</a></p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Saurabh Tripathi — All Rights Reserved
+  </footer>
+
   <script>
-    // small helper: press Ctrl+S to download current HTML snapshot
-    document.addEventListener('keydown', function(e){
-      if((e.ctrlKey||e.metaKey) && e.key === 's'){
-        e.preventDefault();
-        const blob = new Blob([document.documentElement.outerHTML], {type:'text/html'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url; a.download = 'saurabh_tripathi_portfolio.html';
-        a.click(); URL.revokeObjectURL(url);
-      }
-    })
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+    // Header opacity on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
   </script>
+
 </body>
 </html>
