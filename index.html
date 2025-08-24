@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Saurabh Tripathi — AI & Data Science Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --dark: #0f1724;
@@ -73,8 +73,15 @@
     }
     .card.visible { opacity: 1; transform: translateY(0); }
 
-    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill { background: var(--accent); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; }
+    ul.skill-list {
+      list-style-type: disc;
+      margin-left: 20px;
+      color: var(--dark);
+    }
+    ul.skill-list li {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
 
     footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 0.9rem; }
 
@@ -97,7 +104,7 @@
     <video src="https://www.w3schools.com/howto/rain.mp4" autoplay muted loop></video>
     <div>
       <h1>Saurabh Tripathi</h1>
-      <p>AI & Data Science Enthusiast | GenAI Specialist | Product Developer</p>
+      <p>AI Product Engineer — Builder — GenAI-Data Specialist</p>
       <button onclick="document.getElementById('projects').scrollIntoView({ behavior:'smooth' })">View My Work</button>
     </div>
   </section>
@@ -111,35 +118,30 @@
 
   <section id="projects">
     <h2>Projects</h2>
-  
 
-  <div class="card">
-    <h3>Prompt Engineering for GenAI Tools</h3>
-    <p>Developed AI prompt workflows with ChatGPT, Gemini, Power BI, n8n, Nhost, Hasura — full-stack AI chatbot with authentication and backend automation.</p>
-    <a href="https://uplinkai-chat.netlify.app/" target="_blank">Live App</a>
-  </div>
+    <div class="card">
+      <h3>Prompt Engineering for GenAI Tools</h3>
+      <p>Developed AI prompt workflows with ChatGPT, Gemini, Power BI, n8n, Nhost, Hasura — full-stack AI chatbot with authentication and backend automation.</p>
+      <a href="https://uplinkai-chat.netlify.app/" target="_blank">Live App</a>
+    </div>
 
-  <div class="card">
-    <h3>UpLinkAI – AI Career Platform</h3>
-    <p>Built a chatbot-based learning and career guidance platform with Firebase, HTML, and Power BI dashboards.</p>
-    <a href="https://uplinkai.netlify.app/" target="_blank">Website</a>
-  </div>
+    <div class="card">
+      <h3>UpLinkAI – AI Career Platform</h3>
+      <p>Built a chatbot-based learning and career guidance platform with Firebase, HTML, and Power BI dashboards.</p>
+      <a href="https://uplinkai.netlify.app/" target="_blank">Website</a>
+    </div>
 
-  <div class="card">
-    <h3>UpLinkAI Quiz App</h3>
-    <p>Created an interactive quiz application using Python, HTML, CSS, and JavaScript, hosted on Render.</p>
-    <a href="https://uplinkai-quizapp.onrender.com/" target="_blank">Live Website</a>
-  </div>
+    <div class="card">
+      <h3>UpLinkAI Quiz App</h3>
+      <p>Created an interactive quiz application using Python, HTML, CSS, and JavaScript, hosted on Render.</p>
+      <a href="https://uplinkai-quizapp.onrender.com/" target="_blank">Live Website</a>
+    </div>
 
-  <div class="card">
-    <h3>Solar BIPV Assessment – ISRO</h3>
-    <p>Mapped solar potential on rooftops using Cartosat-3 data, Python, CesiumJS. Built visual models for planning.</p>
-    <a href="https://github.com/Saurabh-techhub/isro-bipv-analysis-model" target="_blank">GitHub</a>
-  </div>
-</section>
-
-    
-    <!-- Other project cards... -->
+    <div class="card">
+      <h3>Solar BIPV Assessment – ISRO</h3>
+      <p>Mapped solar potential on rooftops using Cartosat-3 data, Python, CesiumJS. Built visual models for planning.</p>
+      <a href="https://github.com/Saurabh-techhub/isro-bipv-analysis-model" target="_blank">GitHub</a>
+    </div>
   </section>
 
   <section id="internship">
@@ -148,6 +150,10 @@
       <h3>AI Intern – Cosmic365.AI (Sep 2024–Feb 2025)</h3>
       <p>Delivered 150+ GenAI workshops, built automation dashboards using Power BI & n8n, awarded $600 scholarship, generated significant AI-based revenue.</p>
       <a href="https://www.linkedin.com/posts/saurabh-tripathi28_internship-scholarship-cosmic365-activity-7239999514294599683-DB7M" target="_blank">LinkedIn Post</a>
+    </div>
+    <div class="card">
+      <h3>Implementation Intern – Vega AI (May 2025–July 2025)</h3>
+      <p>Worked with AI product teams to implement GenAI client solutions. Assisted with large language model integrations, custom API deployments, and client feedback cycles. Supported post-deployment maintenance and technical prototyping.</p>
     </div>
   </section>
 
@@ -161,10 +167,15 @@
     </div>
     <div class="card">
       <h3>Technical Skills</h3>
-      <div class="skill-list">
-        <!-- list all skills -->
-        <span class="skill">Python</span><span class="skill">SQL</span><!-- ... -->
-      </div>
+      <ul class="skill-list">
+        <li><strong>Programming Languages:</strong> Python, JavaScript, SQL, HTML, CSS, Node.js</li>
+        <li><strong>AI/ML Frameworks:</strong> TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy, Matplotlib</li>
+        <li><strong>Generative AI &amp; NLP:</strong> ChatGPT, Gemini, OpenAI APIs, LangChain, Prompt Engineering</li>
+        <li><strong>Data Visualization &amp; Tools:</strong> Power BI, Google Colab, MySQL, CesiumJS, Firebase</li>
+        <li><strong>Platforms:</strong> Nhost, Hasura, Netlify, Render, n8n, Rean Auth, Arduino, IBM Cloud, Git/GitHub</li>
+        <li><strong>Product Management &amp; Leadership:</strong> MVP Development, Design Thinking, Agile, Product Roadmapping, Team Leadership, Startup Operations</li>
+        <li><strong>Soft Skills:</strong> Communication, Teamwork, Leadership, Critical Thinking</li>
+      </ul>
     </div>
   </section>
 
@@ -175,7 +186,7 @@
         <li>Power BI, Data Analytics & Generative AI – Coursera/Udemy</li>
         <li>Qualified for BSc Data Science – IIT Madras; Proud JNV Alumnus</li>
         <li>EF SET English B2 – <a href="https://drive.google.com/file/d/1B3rx7yJnijRd8vSzt85999Q1C7FFPX2Q/view?usp=sharing" target="_blank">Certificate</a></li>
-        <li>Kho Kho Nationals & BPL Cricket</li>
+        <li>Kho Kho Nationals & BPL Cricket</li>
         <li>Interests: Sci‑fi, Startups, Quizzing, Trekking</li>
       </ul>
     </div>
